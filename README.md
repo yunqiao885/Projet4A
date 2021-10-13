@@ -13,11 +13,9 @@
 ​     I.      Administrateur
 
 * Se Connecte
-
 * Créer un administrateur
-
+* Modifier ses données
 * Ajouter un jeu
-
 * Supprimer un jeu   
 
  
@@ -53,7 +51,7 @@
    III.      Système
 
 * Envoyer des mails aux utilisateurs pour des nouveautés ou mise à jour
-* Mettre à jour les jeux
+* Mettre à jour les jeux (Apres avoir fini)
 * Sauvegarder l'historique
 
  
@@ -62,3 +60,13 @@
 
 * Mets les jeux sur son site
 * Service permettant de fournir des informations sur les jeux (Pour une mise à jour auto)
+
+
+
+## Services web  à réaliser
+
+* Paiement en ligne
+* Messagerie ou e-mail en ligne 
+* Connexion et sécurité d'accès au site
+* Gestion des données (Jeux ou Administrateur)
+
