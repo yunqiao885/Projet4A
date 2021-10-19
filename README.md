@@ -28,7 +28,7 @@
 
 * Se Connecter (****)
 
-* Recevoir le code par téléphone et par mail (****)
+* Recevoir le code par téléphone et par mail (***)
 
 * Créer une liste de souhait (panier) (***)
 
@@ -66,7 +66,7 @@
 ## Services web  à réaliser
 
 * Paiement en ligne
-* Messagerie ou e-mail en ligne 
+* Messagerie ou e-mail en ligne (JavaMailSenders)
 * Connexion et sécurité d'accès au site
-* Gestion des données (Jeux ou Administrateur)
+* Gestion des données (Jeux ou Administrateur) (Mysql Connector + Data JPA + RESTRepository)
 
