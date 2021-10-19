@@ -21,6 +21,7 @@
  
 
 ​    II.      Utilisateur
+* Obtenir un jeu (****)
 
 * Consulter les produits sur le site (****)
 
@@ -34,7 +35,7 @@
 
 * Faire le paiement par carte bancaire (****)
 
-* Liste des amis (***)
+* Consulter la iste des amis (***)
 
 * Messagerie entre ami (**)
 
