@@ -21,7 +21,7 @@
  
 
 ​    II.      Utilisateur
-* Obtenir un jeu
+* Obtenir un jeu (****)
 
 * Consulter les produits sur le site (****)
 
