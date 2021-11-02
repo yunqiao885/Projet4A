@@ -34,7 +34,5 @@ public class Utilisateur extends Personne {
         this.bibliotheque = bibliotheque;
     }
 
-    // Id bibliotheque a referencer
-    // id mode de payement
 
 }
