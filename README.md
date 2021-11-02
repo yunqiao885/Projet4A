@@ -2,8 +2,7 @@
 
 ## Description
 
-​ Une application web permettant a des clients de se connecter et de consulter et d’acheter des jeux sur notre site. Ils
-pourront chater avec leurs amis et programmer des rendez vous pour jouer en ligne.
+​ Une application web permettant a des clients de se connecter et de consulter et d’acheter des jeux sur notre site.
 
 ## Fonctionnalités :
 
@@ -25,7 +24,7 @@ pourront chater avec leurs amis et programmer des rendez vous pour jouer en lign
 * Faire le paiement par carte bancaire
 * Mettre un avis sur un jeu 
 
-III. Système
+​ III. Système
 
 * Envoyer des mails aux utilisateurs pour des nouveautés ou mise à jour
 * Sauvegarder l'historique
