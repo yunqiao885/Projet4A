@@ -32,7 +32,7 @@
 
 ## Services web à réaliser
 
-* Paiement en ligne
+* Paiement en ligne (Stripe)
 * Messagerie ou e-mail en ligne (JavaMailSenders)
 * Connexion et sécurité d'accès au site
 * Gestion des données (Jeux ou Administrateur) (Mysql Connector + Data JPA + RESTRepository)
