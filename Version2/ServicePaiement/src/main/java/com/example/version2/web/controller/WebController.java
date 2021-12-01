@@ -42,7 +42,7 @@ public class WebController {
         model.addAttribute("stripePublicKey", stripePublicKey);
 
         Utilisateur user = utilisateurInterface.findByEmail(checkoutForm.getEmail()); // Chercher un moyen plus pratique de recuperer l'user (Session)
-        if (user.getCustomerId()==null){
+        if (user==null){
             CustomerCreateParams params = CustomerCreateParams.builder()
                     .setEmail(checkoutForm.getEmail())
                     .setName(checkoutForm.getNom())
