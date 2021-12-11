@@ -1,3 +1,4 @@
+import React from 'react';
 import '../styles/Jeu.css'
 
 function Jeu(props) {
