@@ -1,4 +1,4 @@
-package com.example.version2.web.controller;
+package com.example.version2.controller.web;
 
 import com.example.version2.dto.CreatePayment;
 import com.example.version2.dto.CreatePaymentResponse;

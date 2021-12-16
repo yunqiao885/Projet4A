@@ -15,7 +15,7 @@ export default function Panier(props){
             <button onClick={() => setIsOpen(false)}>Fermer</button>
             <h2>Panier</h2>
             <div>
-                {panier.map(({nom, prix, qte, id}) => (
+                {panier.map(({id, nom, prix, qte }) => (
                     <div key={id}>{nom} : {prix}€ x {qte}</div>
                     ))}
             </div>

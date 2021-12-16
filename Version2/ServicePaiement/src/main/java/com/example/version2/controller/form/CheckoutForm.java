@@ -1,4 +1,4 @@
-package com.example.version2.web.form;
+package com.example.version2.controller.form;
 
 import lombok.Data;
 import lombok.Getter;

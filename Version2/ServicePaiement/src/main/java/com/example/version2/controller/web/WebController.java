@@ -1,8 +1,8 @@
-package com.example.version2.web.controller;
+package com.example.version2.controller.web;
 
 import com.example.version2.dao.UtilisateurInterface;
 import com.example.version2.entities.Utilisateur;
-import com.example.version2.web.form.CheckoutForm;
+import com.example.version2.controller.form.CheckoutForm;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
 import com.stripe.param.CustomerCreateParams;
@@ -14,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 

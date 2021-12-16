@@ -1,9 +1,6 @@
 package com.example.version2.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Jeu {
 
     @Id
@@ -49,4 +47,6 @@ public class Jeu {
         this.nom_fabricant = nom_fabricant;
         this.date_publication = date_publication;
     }
+
+
 }

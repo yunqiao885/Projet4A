@@ -1,4 +1,4 @@
-package com.example.version2.web.controller;
+package com.example.version2.controller.web;
 
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.model.*;

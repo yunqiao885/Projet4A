@@ -5,9 +5,9 @@ function Jeu(props) {
     const jeu = props.value
     return (
         <div>
-            <b> {jeu.name} </b> <br/>
-             {jeu.category} {choix(jeu.category)} <br/>
-            Avis : {avis(jeu.avis)}
+            <b> {jeu.nom} </b> <br/>
+             {jeu.description} {choix(jeu.description)} <br/>
+            Avis : {avis(jeu.id)}
         </div>
     )
 }
@@ -22,17 +22,17 @@ function avis(max){
 
 function choix(categorie){
     switch (categorie) {
-        case 'tir':
+        case 'Jeu de tir':
             return <span>🔫</span>
-        case 'simulation':
+        case 'Jeu de simulation':
             return <span>🧍‍♂️</span>
-        case 'course':
+        case 'Jeu de course':
             return <span>🚗</span>
-        case 'aventure':
+        case 'Jeu de chasse':
             return <span>🏞</span>
-        case 'combat':
+        case 'Jeu de combat':
             return <span>⚔️</span>
-        case 'gestion':
+        case 'Jeu de strategie':
             return <span>🏙</span>
         default:
             return <span></span>
