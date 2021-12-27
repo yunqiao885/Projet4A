@@ -33,13 +33,11 @@ public class Utilisateur extends Personne {
 
     public String customerId;
 
-    public Utilisateur(String username, String email, String password, Panier panier, Bibliotheque bibliotheque) {
+    public Utilisateur(String username, String email, String password, Panier panier, Bibliotheque bibliotheque, String customerId) {
         super(username, email, password);
         this.panier = panier;
         this.bibliotheque = bibliotheque;
+        this.customerId = customerId;
     }
-
-    // Id bibliotheque a referencer
-    // id mode de payement
 
 }

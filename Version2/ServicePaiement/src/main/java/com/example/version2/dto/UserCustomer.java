@@ -7,9 +7,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class CreatePayment {
-
-     private String customerId;
-     private int prix;
-
+public class UserCustomer {
+    private String username;
+    private String password;
 }

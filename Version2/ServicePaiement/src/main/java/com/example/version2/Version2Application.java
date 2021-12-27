@@ -43,9 +43,9 @@ public class Version2Application {
             jeuInterface.save(new Jeu(6,"Streef Fighter","Jeu de combat",700,"Capcom",new Date(2022,2,3)));
 
 
-            utilisateurInterface.save(new Utilisateur("tenede","tenede@tene.com", "123", new Panier(10), new Bibliotheque()));
-            utilisateurInterface.save(new Utilisateur("yunqiao","yunqiao@zhang.com", "456", new Panier(200), new Bibliotheque()));
-            utilisateurInterface.save(new Utilisateur("tankeu","tankeu@ivan.com", "789", new Panier(44), new Bibliotheque()));
+            utilisateurInterface.save(new Utilisateur("tenede","tenede@tene.com", "123", new Panier(10), new Bibliotheque(), null));
+            utilisateurInterface.save(new Utilisateur("yunqiao","yunqiao@zhang.com", "456", new Panier(200), new Bibliotheque(), null));
+            utilisateurInterface.save(new Utilisateur("tankeu","tankeu@ivan.com", "789", new Panier(44), new Bibliotheque(), null));
 
         };
     }

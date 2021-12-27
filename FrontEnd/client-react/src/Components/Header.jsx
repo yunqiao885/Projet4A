@@ -20,10 +20,10 @@ function Header({islogedIn, setIsLogedIn}) {
        { 
        islogedIn &&
         <nav>
-            <Link to="jeuxBoutique">Magasin</Link>
-            <Link to="bibliotheque">Bibliotheque</Link>
-            <Link to="compte">Mon Compte</Link>
-            <Link to="logout" onClick={() => {
+            <Link to="user/boutique">Magasin</Link>
+            <Link to="user/bibliotheque">Bibliotheque</Link>
+            <Link to="user/compte">Mon Compte</Link>
+            <Link to="user/logout" onClick={() => {
                 sessionStorage.removeItem("username")
                 setIsLogedIn(false);
             }}>Logout</Link>

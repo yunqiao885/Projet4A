@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/ListeJeux.css'
-import { jeuList } from '../data/jeuList'
 import Jeu from './Jeu'
 
 function ListeJeux({panier, setPanier}) {
@@ -18,6 +17,7 @@ function ListeJeux({panier, setPanier}) {
             }
         }
         getListeJeu()
+        
     }, [])
     
     function ajouterPanier(id, nom, prix) {

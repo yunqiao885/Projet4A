@@ -11,9 +11,17 @@ function Login ({setIsLogedIn}){
         func(e.target.value);
     }
 
+
     function loginClicked(){
+        try {
+            fetch("http://localhost:8080/utilisateurs/search/findByUsername?username="+username)
+                .then(response => response.json())
+                .then(data => sessionStorage.setItem('customerId', data.customerId))
+        } catch (error) {
+            console.log(error);
+        }
         sessionStorage.setItem('username', username);
-        navigate("/user");
+        navigate("/user/boutique");
         setIsLogedIn(true);
     }
 

@@ -33,34 +33,6 @@ public class WebController {
         return "checkoutForm";
     }
 
-    @PostMapping("/checkout")
-    public String validate(@ModelAttribute @Valid CheckoutForm checkoutForm, BindingResult bindingResult, Model model) throws StripeException {
-        if (bindingResult.hasErrors()){
-            return "checkoutForm";
-        }
-        model.addAttribute("stripePublicKey", stripePublicKey);
-
-        Utilisateur user = utilisateurInterface.findByEmail(checkoutForm.getEmail()); // Chercher un moyen plus pratique de recuperer l'user (Session)
-        if (user==null){
-            CustomerCreateParams params = CustomerCreateParams.builder()
-                    .setEmail(checkoutForm.getEmail())
-                    .setName(checkoutForm.getNom())
-                    .setPhone(checkoutForm.getNumero())
-                    .setAddress(CustomerCreateParams.Address.builder()
-                            .setCity(checkoutForm.getCity())
-                            .setPostalCode(checkoutForm.getCodePostal())
-                            .build()
-                    )
-                    .build();
-            Customer customer = Customer.create(params);
-            model.addAttribute("customerId", customer.getId());
-        }else{
-            model.addAttribute("customerId", user.getCustomerId());
-        }
-
-        return "checkout";
-    }
-
 
 
 }
