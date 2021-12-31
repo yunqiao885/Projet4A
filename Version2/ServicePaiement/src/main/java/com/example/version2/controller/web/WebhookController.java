@@ -1,10 +1,13 @@
 package com.example.version2.controller.web;
 
+import com.example.version2.dao.UtilisateurInterface;
+import com.example.version2.entities.Utilisateur;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.model.*;
 import com.stripe.net.Webhook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,17 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebhookController {
 
     private Logger logger = LoggerFactory.getLogger(WebhookController.class);
+    @Autowired
+    private UtilisateurInterface utilisateurInterface;
 
     @Value("${stripe.webhook.secret}")
     private String endpointSecret;
 
     @PostMapping("/webhook")
     public String handleStripeEvent(@RequestBody String payload, @RequestHeader("Stripe-Signature") String sigHeader){
-
-        // Replace this endpoint secret with your endpoint's unique secret
-        // If you are testing with the CLI, find the secret by running 'stripe listen'
-        // If you are using an endpoint defined with the API or dashboard, look in your webhook settings
-        // at https://dashboard.stripe.com/webhooks
 
         if (sigHeader == null){
             return "";
@@ -60,12 +60,19 @@ public class WebhookController {
                     PaymentIntent paymentIntent = (PaymentIntent) stripeObject;
                     logger.info("Payment for id : "+ paymentIntent.getId() +" Amount : "+" " + paymentIntent.getAmount() + " succeeded.");
                     // Then define and call a method to handle the successful payment intent.
-                    // handlePaymentIntentSucceeded(paymentIntent);
+                    System.out.println("Payment for id : "+ paymentIntent.getId() +" Amount : "+" " + paymentIntent.getAmount() + " succeeded." + paymentIntent.getCustomer());
+                    System.out.println("Customer: "+paymentIntent.getCustomer()+ " Mode de paiement: "+paymentIntent.getPaymentMethod());
+                     handlePaymentIntentSucceeded(paymentIntent);
                     break;
                 default:
                     logger.warn("Unhandled event type: " + event.getType());
                     break;
             }
             return "";
+    }
+
+    private void handlePaymentIntentSucceeded(PaymentIntent paymentIntent) {
+        Utilisateur user = utilisateurInterface.findByCustomerId(paymentIntent.getCustomer());  // verifier si ca fonctionne
+
     }
 }

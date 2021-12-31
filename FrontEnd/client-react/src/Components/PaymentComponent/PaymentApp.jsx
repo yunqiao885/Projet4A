@@ -10,9 +10,6 @@ import "../../styles/PaymentApp.css";
 const stripePromise = loadStripe("pk_test_51Jx3zGE53UCrsTeH4QQXgAv80lSh94JL6r9aweYqqw4fdhV6MCpur5CIXNqQGMGB168ZmlNDdZdmhrXopUuRpRxq00tnTBmUg7");
 
 export default function PaymentApp({panier}) {
-  const total = panier.reduce(
-    (acc, jeu) => acc + jeu.qte*jeu.prix, 0
-  );
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
@@ -23,7 +20,7 @@ export default function PaymentApp({panier}) {
       body: JSON.stringify(
         { 
           customerId : sessionStorage.getItem("customerId"),
-          prix : total
+          jeux : panier.jeux
         })
     })
       .then((res) => res.json())

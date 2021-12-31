@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 
-function Login ({setIsLogedIn}){
+function Login ({setId, setIsLogedIn}){
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -14,19 +14,33 @@ function Login ({setIsLogedIn}){
 
     function loginClicked(){
         try {
-            fetch("http://localhost:8080/utilisateurs/search/findByUsername?username="+username)
-                .then(response => response.json())
-                .then(data => sessionStorage.setItem('customerId', data.customerId))
+            fetch("http://localhost:8080/get-customer-id", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(
+                        {  
+                            username: username,
+                            password: password,
+                        }),
+                    })
+                .then(response => response.text())
+                .then(data => {
+                    sessionStorage.setItem('id', data)
+                    setId(data)
+                    console.log(data)
+                    })
+                .then(sessionStorage.setItem('username', username))
         } catch (error) {
             console.log(error);
         }
-        sessionStorage.setItem('username', username);
-        navigate("/user/boutique");
         setIsLogedIn(true);
+        navigate("/user")
+        
     }
 
     return (
         <div className="login">
+            
             <label htlmfor="username">Username </label>
             <input type="text" id="username" name="username" value={username} onChange={(e) => handleChange(e, setUsername)} />
             <label htlmfor="password">Password </label>

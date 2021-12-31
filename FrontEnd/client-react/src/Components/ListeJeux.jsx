@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/ListeJeux.css'
 import Jeu from './Jeu'
 
-function ListeJeux({panier, setPanier}) {
+function ListeJeux({jeuxPanier, setJeuxPanier}) {
 
     const [listeJeux, setListeJeux] = useState([])
 
@@ -20,15 +20,17 @@ function ListeJeux({panier, setPanier}) {
         
     }, [])
     
-    function ajouterPanier(id, nom, prix) {
-        const jeuAjouter = panier.find(jeu => jeu.nom === nom)
-        if (jeuAjouter){
-            const newPanier = panier.filter(
-                jeu => jeu.nom !==nom
-            )
-            setPanier([...newPanier, {id, nom, prix, qte: jeuAjouter.qte +1} ])
+    function ajouterPanier(id, nom, description, prix) {
+        const jeuAjouter = jeuxPanier.find(jeu => jeu.nom === nom)
+        if (!jeuAjouter){
+            jeuxPanier = [...jeuxPanier, {id, nom, description, prix, qte:1}]
+            setJeuxPanier(jeuxPanier);
+            
         } else{
-            setPanier([...panier, {id, nom, prix, qte:1}])
+           // const newPanier = panier.filter(
+           //     jeu => jeu.nom !==nom
+           // )
+           // setPanier([...newPanier, {id, nom, prix, qte: jeuAjouter.qte +1} ])
         }
     }
 
@@ -38,7 +40,7 @@ function ListeJeux({panier, setPanier}) {
                 {listeJeux.map((jeu) => (
                 <li className="liste-jeu" key={jeu.id}>
                     <Jeu value={jeu}/>
-                    <button onClick={() => ajouterPanier(jeu.id, jeu.nom, jeu.prix)
+                    <button onClick={() => ajouterPanier(jeu.id, jeu.nom, jeu.description, jeu.prix)
                     }>Ajouter</button>
                 </li>
                 ))}
@@ -46,7 +48,6 @@ function ListeJeux({panier, setPanier}) {
         </div>
     )
 }
-
 
 
 export default ListeJeux

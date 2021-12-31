@@ -18,14 +18,13 @@ public class PaymentController {
     @PostMapping("/create-payment-intent")
     public CreatePaymentResponse createPayment(@RequestBody CreatePayment createPayment) throws StripeException {
         PaymentIntentCreateParams params = PaymentIntentCreateParams.builder()
-                    .setAmount(createPayment.getPrix()*100L)
-                    .setCurrency("eur")
-                    .setCustomer(createPayment.getCustomerId())
-                    .build();
+                .setAmount(createPayment.getPrix()*100L)
+                .setCurrency("eur")
+                .setCustomer(createPayment.getCustomerId())
+                .build();
 
             // Create a PaymentIntent with the order amount and currency
-            PaymentIntent paymentIntent = PaymentIntent.create(params);
-
-            return new CreatePaymentResponse(paymentIntent.getClientSecret());
+        PaymentIntent paymentIntent = PaymentIntent.create(params);
+        return new CreatePaymentResponse(paymentIntent.getClientSecret());
     }
 }

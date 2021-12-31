@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
-import java.util.Date;
 
 @SpringBootApplication
 public class Version2Application {
@@ -35,12 +34,12 @@ public class Version2Application {
     @Bean
     CommandLineRunner runner   (UtilisateurInterface utilisateurInterface, AvisInterface avisInterface, JeuInterface jeuInterface){
         return args -> {
-            jeuInterface.save(new Jeu(1,"Clash Of Clan","Jeu de strategie",200,"Alfred",new Date(2021,2,3)));
-            jeuInterface.save(new Jeu(2,"Monster Hunter","Jeu de chasse",800,"Capcom",new Date(2022,2,3)));
-            jeuInterface.save(new Jeu(3,"Call Of Duty","Jeu de tir",1000,"ActiVision",new Date(2022,2,3)));
-            jeuInterface.save(new Jeu(4,"Need for Speed","Jeu de course",400,"Forza",new Date(2022,2,3)));
-            jeuInterface.save(new Jeu(5,"Sims 4","Jeu de simulation",500,"Electronic Arts",new Date(2022,2,3)));
-            jeuInterface.save(new Jeu(6,"Streef Fighter","Jeu de combat",700,"Capcom",new Date(2022,2,3)));
+            jeuInterface.save(new Jeu("Clash Of Clan","Jeu de strategie",200,"Alfred","10/03/2020", null));
+            jeuInterface.save(new Jeu("Monster Hunter","Jeu de chasse",800,"Capcom","10/03/2020", null));
+            jeuInterface.save(new Jeu("Call Of Duty","Jeu de tir",1000,"ActiVision","10/03/2020", null));
+            jeuInterface.save(new Jeu("Need for Speed","Jeu de course",400,"Forza","10/03/2020", null));
+            jeuInterface.save(new Jeu("Sims 4","Jeu de simulation",500,"Electronic Arts","10/03/2020", null));
+            jeuInterface.save(new Jeu("Streef Fighter","Jeu de combat",700,"Capcom","10/03/2020", null));
 
 
             utilisateurInterface.save(new Utilisateur("tenede","tenede@tene.com", "123", new Panier(10), new Bibliotheque(), null));

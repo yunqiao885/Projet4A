@@ -13,15 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-public class UtilisateurController {
+public class CustomerController {
 
     @Autowired
     private UtilisateurInterface utilisateurInterface;
 
     @PostMapping("/create-customer-id")
-    public String createCustomerId(@RequestBody CreateCustomer createCustomer) throws StripeException {
+    public int createCustomerId(@RequestBody CreateCustomer createCustomer) throws StripeException {
 
-        // model.addAttribute("stripePublicKey", stripePublicKey);  Supprimer Model en faisant des appels d'api
         CustomerCreateParams params = CustomerCreateParams.builder()
                 .setEmail(createCustomer.getEmail())
                 .setName(createCustomer.getNom())
@@ -33,8 +32,15 @@ public class UtilisateurController {
                 )
                 .build();
         Customer customer = Customer.create(params);
-        utilisateurInterface.save(new Utilisateur(createCustomer.getUsername(),createCustomer.getEmail(),createCustomer.getPassword(),new Panier(), new Bibliotheque(), customer.getId()));
-        return customer.getId();
+        Utilisateur user = new Utilisateur(createCustomer.getUsername(),createCustomer.getEmail(),createCustomer.getPassword(),new Panier(), new Bibliotheque(), customer.getId());
+        utilisateurInterface.save(user);
+        return user.getId();
+    }
+
+    @PostMapping("/get-customer-id")
+    public int getCustomerId(@RequestBody CreateCustomer createCustomer) throws StripeException {
+        Utilisateur user = utilisateurInterface.findByUsername(createCustomer.getUsername());
+        return user.getId();
     }
 
 

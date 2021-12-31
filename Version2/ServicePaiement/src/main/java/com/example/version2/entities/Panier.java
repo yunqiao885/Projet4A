@@ -1,9 +1,6 @@
 package com.example.version2.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,9 +17,6 @@ public class Panier {
     private int id;
 
     private int prix_total;
-
-    @OneToOne(mappedBy = "panier")
-    private Utilisateur user;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(

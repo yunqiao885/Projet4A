@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 
-function Register ({setIsLogedIn}){
+function Register ({setId, setIsLogedIn}){
     let navigate = useNavigate()
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -47,33 +47,34 @@ function Register ({setIsLogedIn}){
     
     function registerClicked(){
 
-        function getCustomerId() {
-            try {
-                fetch("http://localhost:8080/create-customer-id", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(
-                        {  
-                            username: username,
-                            nom: nom,
-                            prenom: prenom,
-                            email: email,
-                            password: password,
-                            numero: tel,
-                            codePostal: cp,
-                            ville: ville
-                        }),
+        try {
+            fetch("http://localhost:8080/create-customer-id", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(
+                    {  
+                        username: username,
+                        nom: nom,
+                        prenom: prenom,
+                        email: email,
+                        password: password,
+                        numero: tel,
+                        codePostal: cp,
+                        ville: ville
+                    }),
+                })
+                .then(response => response.text())
+                .then(data => {
+                    sessionStorage.setItem('id', data)
+                    setId(data)
+                    console.log(data)
                     })
-                    .then(response => response.text())
-                    .then(data => sessionStorage.setItem('customerId', data))
-            } catch (error) {
-                console.log(error);
-            }
+                .then(sessionStorage.setItem('username', username))
+        } catch (error) {
+            console.log(error);
         }
-        getCustomerId()
-        sessionStorage.setItem('username', username);
         
-        navigate("/user/boutique");
+        navigate("/user");
         setIsLogedIn(true);
     }
 

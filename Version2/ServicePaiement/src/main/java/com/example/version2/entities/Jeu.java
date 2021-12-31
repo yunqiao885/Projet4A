@@ -21,16 +21,8 @@ public class Jeu {
     private String description;
     private int prix;
     private String nom_fabricant;
-    private Date date_publication;
-
-    @OneToMany(mappedBy = "jeu")
-    public List<Avis> avis;        // Liste des avis avec ce jeu
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "jeux")
-    private List<Panier> paniers;                              // Liste des paniers avec ces jeux
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},  mappedBy = "jeux")
-    private List<Bibliotheque> bibliotheques;                  // Liste des bibliotheques avec ces jeux
+    private String date_publication;
+    private String priceId;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -39,13 +31,13 @@ public class Jeu {
     )
     private List<Categorie> categories;
 
-    public Jeu(int id, String nom, String description, int prix, String nom_fabricant, Date date_publication) {
-        this.id = id;
+    public Jeu(String nom, String description, int prix, String nom_fabricant, String date_publication, String priceId) {
         this.nom = nom;
         this.description = description;
         this.prix = prix;
         this.nom_fabricant = nom_fabricant;
         this.date_publication = date_publication;
+        this.priceId = priceId;
     }
 
 

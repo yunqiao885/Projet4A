@@ -25,6 +25,7 @@ function Header({islogedIn, setIsLogedIn}) {
             <Link to="user/compte">Mon Compte</Link>
             <Link to="user/logout" onClick={() => {
                 sessionStorage.removeItem("username")
+                sessionStorage.removeItem("id")
                 setIsLogedIn(false);
             }}>Logout</Link>
         </nav>

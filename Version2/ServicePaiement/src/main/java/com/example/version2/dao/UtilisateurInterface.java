@@ -9,4 +9,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource
 public interface UtilisateurInterface extends JpaRepository<Utilisateur, Integer> {
     public Utilisateur findByUsername(String username);   // http://localhost:8080/utilisateurs/search/findByUsername?username="username"
+    public Utilisateur findByCustomerId(String customerId);
 }

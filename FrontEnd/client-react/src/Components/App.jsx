@@ -11,18 +11,14 @@ import Register from './Register'
 
 function App() {
   const [islogedIn, setIsLogedIn] = useState(sessionStorage.getItem("username")!==null);
+  const [id, setId] = useState(0)
   return (
     <div className="App">
         <Header islogedIn={islogedIn} setIsLogedIn={setIsLogedIn}/>
         <Routes>
-          <Route path="/login" element={<Login setIsLogedIn={setIsLogedIn} />}/> 
-          <Route path="/register" element={<Register setIsLogedIn={setIsLogedIn} />}/>
-          <Route path="/logout" element={<AuthenticatedRoute 
-              islogedIn={islogedIn} 
-              children={<Login setIsLogedIn={setIsLogedIn} />} 
-              />} 
-            /> 
-          <Route Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp />}/>} /> 
+          <Route path="/login" element={<Login setId={setId} setIsLogedIn={setIsLogedIn} />}/> {/* Ne plus pouvoir retourner au login une fois connecte */}
+          <Route path="/register" element={<Register setId={setId} setIsLogedIn={setIsLogedIn} />}/> 
+          <Route Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp id={id} setId={setId} />}/>} /> 
           <Route path="*" element={<Error />} />        
         </Routes>
     </div>
