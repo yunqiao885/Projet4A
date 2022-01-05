@@ -20,6 +20,7 @@ export default function Panier({total, jeuxPanier, setJeuxPanier}){
             <h3>Total : {total}</h3>
             <button onClick={() => setJeuxPanier([])}>Vider le panier</button>
             {total >0 && <button onClick={() => navigate("/user/paiement")}>Payer</button>}
+            
         </div>
     ) : (
         <button onClick={() => setIsOpen(true)}>Ouvrir le Panier</button>

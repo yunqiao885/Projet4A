@@ -1,11 +1,11 @@
 .panier {
 	color: white;
 	background-color: #31b572;
-	padding: 32px;
+	padding: 25px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	width: 200px;
+	width: 170px;
 }
 
 .panier-add-button {
@@ -22,13 +22,20 @@
 	align-self: self-start;
 	padding: 0;
 	color: white;
+	align-self: flex-end;
 }
 
 .panier-closed {
 	padding: 32px;
-	width: 200px;
+	width: 50px;
 }
 
 .panier-closed > button {
 	color: black;
 }
+
+button{
+	width: 170px;
+	height: 50px;
+}
+

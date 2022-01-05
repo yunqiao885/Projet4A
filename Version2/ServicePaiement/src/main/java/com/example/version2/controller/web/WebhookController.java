@@ -1,6 +1,8 @@
 package com.example.version2.controller.web;
 
 import com.example.version2.dao.UtilisateurInterface;
+import com.example.version2.entities.Jeu;
+import com.example.version2.entities.Panier;
 import com.example.version2.entities.Utilisateur;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.model.*;
@@ -14,17 +16,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 public class WebhookController {
 
     private Logger logger = LoggerFactory.getLogger(WebhookController.class);
+
     @Autowired
     private UtilisateurInterface utilisateurInterface;
 
     @Value("${stripe.webhook.secret}")
     private String endpointSecret;
 
-    @PostMapping("/webhook")
+    @PostMapping("/webhook")  // stripe listen --forward-to localhost:8080/webhook
     public String handleStripeEvent(@RequestBody String payload, @RequestHeader("Stripe-Signature") String sigHeader){
 
         if (sigHeader == null){
@@ -72,7 +77,13 @@ public class WebhookController {
     }
 
     private void handlePaymentIntentSucceeded(PaymentIntent paymentIntent) {
-        Utilisateur user = utilisateurInterface.findByCustomerId(paymentIntent.getCustomer());  // verifier si ca fonctionne
-
+        Utilisateur user = utilisateurInterface.findByCustomerId(paymentIntent.getCustomer());
+        for (Jeu jeu: user.getPanier().getJeux()) {
+            user.getBibliotheque().getJeux().add(jeu);
+        }
+        Panier panier = user.getPanier();
+        panier.setJeux(new ArrayList<Jeu>());
+        user.setPanier(panier);
+        utilisateurInterface.save(user);
     }
 }

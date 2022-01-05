@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react/cjs/react.development";
 import ListeJeux from '../ListeJeux';
 import Panier from './Panier';
+import "../../styles/Boutique.css"
 
 export default function Boutique({panier, setPanier}) {
     
@@ -46,7 +47,7 @@ export default function Boutique({panier, setPanier}) {
     },[jeuxPanier])
 
     return (
-        <div>
+        <div className='boutique-layout-inner'>
             <Panier total={total} jeuxPanier={jeuxPanier} setJeuxPanier={setJeuxPanier} />
             <ListeJeux jeuxPanier={jeuxPanier} setJeuxPanier={setJeuxPanier}  /> 
         </div>

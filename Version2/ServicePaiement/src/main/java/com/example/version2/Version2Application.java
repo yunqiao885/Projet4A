@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.PostConstruct;
+import java.io.IOException;
 
 @SpringBootApplication
 public class Version2Application {
@@ -32,20 +33,26 @@ public class Version2Application {
     }
 
     @Bean
-    CommandLineRunner runner   (UtilisateurInterface utilisateurInterface, AvisInterface avisInterface, JeuInterface jeuInterface){
+    CommandLineRunner runner   (UtilisateurInterface utilisateurInterface, JeuInterface jeuInterface){
         return args -> {
-            jeuInterface.save(new Jeu("Clash Of Clan","Jeu de strategie",200,"Alfred","10/03/2020", null));
-            jeuInterface.save(new Jeu("Monster Hunter","Jeu de chasse",800,"Capcom","10/03/2020", null));
-            jeuInterface.save(new Jeu("Call Of Duty","Jeu de tir",1000,"ActiVision","10/03/2020", null));
-            jeuInterface.save(new Jeu("Need for Speed","Jeu de course",400,"Forza","10/03/2020", null));
-            jeuInterface.save(new Jeu("Sims 4","Jeu de simulation",500,"Electronic Arts","10/03/2020", null));
-            jeuInterface.save(new Jeu("Streef Fighter","Jeu de combat",700,"Capcom","10/03/2020", null));
-
+            jeuInterface.save(new Jeu("Clash Of Clan","Jeu de strategie",20,"Alfred","10/03/2020", null));
+            jeuInterface.save(new Jeu("Monster Hunter","Jeu de chasse",80,"Capcom","10/03/2020", null));
+            jeuInterface.save(new Jeu("Call Of Duty","Jeu de tir",100,"ActiVision","10/03/2020", null));
+            jeuInterface.save(new Jeu("Need for Speed","Jeu de course",40,"Forza","10/03/2020", null));
+            jeuInterface.save(new Jeu("Sims 4","Jeu de simulation",50,"Electronic Arts","10/03/2020", null));
+            jeuInterface.save(new Jeu("Streef Fighter","Jeu de combat",70,"Capcom","10/03/2020", null));
 
             utilisateurInterface.save(new Utilisateur("tenede","tenede@tene.com", "123", new Panier(10), new Bibliotheque(), null));
             utilisateurInterface.save(new Utilisateur("yunqiao","yunqiao@zhang.com", "456", new Panier(200), new Bibliotheque(), null));
             utilisateurInterface.save(new Utilisateur("tankeu","tankeu@ivan.com", "789", new Panier(44), new Bibliotheque(), null));
 
+            try{
+                Runtime.getRuntime().exec("stripe listen --forward-to localhost:8080/webhook");
+            } catch (IOException e) {
+                e.printStackTrace();
+                Runtime.getRuntime().exec("stripe login --api-key sk_test_51Jx3zGE53UCrsTeHryxghX02Z13mWyW0qkNKQBImrOcnor1JkidIAdFROjngKDcpIlmX6mIwfJtihapBjiJhSLXG00FYEzWFm2");
+                Runtime.getRuntime().exec("stripe listen --forward-to localhost:8080/webhook");
+            }
         };
     }
 

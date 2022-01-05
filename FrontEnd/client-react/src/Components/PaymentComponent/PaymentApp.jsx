@@ -9,7 +9,7 @@ import "../../styles/PaymentApp.css";
 // This is your test publishable API key.
 const stripePromise = loadStripe("pk_test_51Jx3zGE53UCrsTeH4QQXgAv80lSh94JL6r9aweYqqw4fdhV6MCpur5CIXNqQGMGB168ZmlNDdZdmhrXopUuRpRxq00tnTBmUg7");
 
-export default function PaymentApp({panier}) {
+export default function PaymentApp({customerId, panier}) {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function PaymentApp({panier}) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
         { 
-          customerId : sessionStorage.getItem("customerId"),
+          customerId : customerId,
           jeux : panier.jeux
         })
     })

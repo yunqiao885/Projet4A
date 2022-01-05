@@ -36,13 +36,12 @@ function UserApp({id, setId}) {
   return (
     <div className="App">
         <Routes>
-          <Route path="/boutique" element={<Boutique panier={panier} setPanier={setPanier} />}/>
-          <Route path="/paiement" element={<PaymentApp panier={panier} />}/>
+          <Route path="/boutique/*" element={<Boutique panier={panier} setPanier={setPanier} />}/>
+          <Route path="/paiement" element={<PaymentApp customerId={user.customerId} panier={panier} />}/>
           <Route path="/bibliotheque" element={<Bibliotheque biblio={biblio} setBiblio={setBiblio} />}/>
           <Route path="/compte" element={<Compte user={user} setUser={setUser} />}/>
-          <Route path="/logout" element={<Navigate to="/login" />} /> {/* Revoire la deconnexion qui affiche toujour le menu lorsque le lien est entre sur l'url */}
+          <Route path="/logout" element={<Navigate to="/login" />} />
         </Routes>
-        
     </div>
 
   );

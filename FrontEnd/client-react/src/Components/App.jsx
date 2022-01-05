@@ -16,9 +16,9 @@ function App() {
     <div className="App">
         <Header islogedIn={islogedIn} setIsLogedIn={setIsLogedIn}/>
         <Routes>
-          <Route path="/login" element={<Login setId={setId} setIsLogedIn={setIsLogedIn} />}/> {/* Ne plus pouvoir retourner au login une fois connecte */}
-          <Route path="/register" element={<Register setId={setId} setIsLogedIn={setIsLogedIn} />}/> 
-          <Route Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp id={id} setId={setId} />}/>} /> 
+          <Route path="/login" element={<AuthenticatedRoute islogedIn={!islogedIn} children={<Login setId={setId} setIsLogedIn={setIsLogedIn} />} other={<Navigate to="/user" />} />} /> 
+          <Route path="/register" element={<AuthenticatedRoute islogedIn={!islogedIn} children={<Register setId={setId} setIsLogedIn={setIsLogedIn} />} other={<Navigate to="/user" />} />} /> 
+          <Route Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp id={id} setId={setId} />} other={<Navigate to="/login" />} />} /> 
           <Route path="*" element={<Error />} />        
         </Routes>
     </div>
@@ -26,9 +26,9 @@ function App() {
   );
 }
 
-function AuthenticatedRoute({islogedIn, children}){
+function AuthenticatedRoute({islogedIn, children, other}){
 
   if (islogedIn) return children
-  else return <Navigate to="/login" />
+  else return other
 } 
 export default App;

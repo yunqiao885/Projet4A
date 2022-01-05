@@ -28,7 +28,6 @@ export default function CheckoutForm() {
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
-          console.log("Payment succeeded!");
           setMessage("Payment succeeded!");
           break;
         case "processing":
@@ -59,7 +58,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/user/paiement", // rediriger vers la bibliotheque
+        return_url: "http://localhost:3000/user/bibliotheque", // rediriger vers la bibliotheque
       },
     });
 

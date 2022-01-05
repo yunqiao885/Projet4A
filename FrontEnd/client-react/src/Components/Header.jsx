@@ -11,19 +11,19 @@ function Header({islogedIn, setIsLogedIn}) {
     <div className='banner'>
         {
         !islogedIn &&
-        <nav>
-            <Link to="login">Login</Link>
-            <Link to="register">Register</Link>
+        <nav className='mjv-nav'>
+            <Link className='mjv-link' to="login">Login</Link>
+            <Link className='mjv-link' to="register">Register</Link>
         </nav>
         }
         
        { 
        islogedIn &&
-        <nav>
-            <Link to="user/boutique">Magasin</Link>
-            <Link to="user/bibliotheque">Bibliotheque</Link>
-            <Link to="user/compte">Mon Compte</Link>
-            <Link to="user/logout" onClick={() => {
+        <nav className='mjv-nav'>
+            <Link className='mjv-link' to="user/boutique">Magasin</Link>
+            <Link className='mjv-link' to="user/bibliotheque">Bibliotheque</Link>
+            <Link className='mjv-link' to="user/compte">Mon Compte</Link>
+            <Link className='mjv-link' to="user/logout" onClick={() => {
                 sessionStorage.removeItem("username")
                 sessionStorage.removeItem("id")
                 setIsLogedIn(false);

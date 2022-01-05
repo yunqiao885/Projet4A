@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import '../styles/ListeJeux.css'
 import Jeu from './Jeu'
+import JeuInfo from './JeuInfo';
 
 function ListeJeux({jeuxPanier, setJeuxPanier}) {
-
+    let navigate = useNavigate()
     const [listeJeux, setListeJeux] = useState([])
 
     useEffect(() => {
@@ -34,17 +36,27 @@ function ListeJeux({jeuxPanier, setJeuxPanier}) {
         }
     }
 
+
     return (
         <div>
+            <Routes>
+            {listeJeux.map((jeu) => (
+                    <Route path={("/"+jeu.id)} element={<JeuInfo jeu={jeu}/>}/>
+                ))}
+            </Routes>
             <ul className="liste">
                 {listeJeux.map((jeu) => (
-                <li className="liste-jeu" key={jeu.id}>
+                <li className="liste-jeu" key={("li-"+jeu.id)}>
                     <Jeu value={jeu}/>
                     <button onClick={() => ajouterPanier(jeu.id, jeu.nom, jeu.description, jeu.prix)
-                    }>Ajouter</button>
+                    }>{jeu.prix}€</button>
+                    <button onClick={() => navigate("/user/boutique/"+jeu.id)
+                    }>Details</button>
+
                 </li>
                 ))}
             </ul>
+            
         </div>
     )
 }
