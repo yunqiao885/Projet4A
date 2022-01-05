@@ -1,0 +1,36 @@
+.banner {
+    color: black;
+    text-align: right;
+    padding: 25px;
+    border-bottom: solid 3px black;
+    display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+	align-items: center;
+}
+
+.titre {
+	padding-left: 25px;
+}
+
+.logo {
+	height: 80px;
+	width: 80px;
+}
+
+.mjv-nav {
+	padding: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 500px;
+}
+
+.mjv-link {
+	text-decoration: none;
+	margin: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+}
