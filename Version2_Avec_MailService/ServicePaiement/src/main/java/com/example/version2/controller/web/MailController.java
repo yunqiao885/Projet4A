@@ -23,17 +23,12 @@ public class MailController {
     @Value("${spring.mail.username}")
     private String from;
 
-    @PostMapping("/GetUserMail")
-    public String getUserMail(@RequestBody CreatePayment createPayment) throws Exception{
+    @PostMapping("/SendMail")
+    public void sendMail(@RequestBody CreatePayment createPayment) {
         Utilisateur utilisateur = utilisateurInterface.findByCustomerId(createPayment.getCustomerId());
-        return utilisateur.getEmail();
-    }
-
-    @PostMapping("/GetUserMail/SendMail")
-    public void sendMail(String to) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
-        message.setTo(to);
+        message.setTo(utilisateur.getEmail());
 
         message.setSubject("Votre code d'activation");
 
