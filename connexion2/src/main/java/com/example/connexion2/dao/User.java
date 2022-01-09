@@ -9,27 +9,29 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int identifiant;
+    private Long id;
     private String username;
     private String password;
     private String telephone;
+    private  String role;
 
     protected User() {
 
     }
 
-    public User(int identifiant,String username,String password,String telephone) {
-        this.identifiant=identifiant;
+    public User(Long id,String username,String password,String telephone,String role) {
+        this.id=id;
         this.password=password;
         this.username=username;
         this.telephone=telephone;
+        this.role=role;
     }
 
-    public int getId() {
-        return identifiant;
+    public Long getId() {
+        return id;
     }
     public void setId(Long id) {
-        this.identifiant = identifiant;
+        this.id = id;
     }
     public String getUsername() {
         return username;
@@ -49,5 +51,6 @@ public class User {
     public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
-
+    public String getRole() {return role;}
+    public void setRole(String role) {this.role = role;}
 }

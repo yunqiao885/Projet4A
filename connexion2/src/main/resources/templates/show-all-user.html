@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+</head>
+<body>
+
+<table border="1px">
+  <tr>
+    <th>Username</th>
+    <th>Mot de passe</th>
+    <th>Email</th>
+    <th>Modifier</th>
+  </tr>
+
+  <tr th:each="user : ${userList}">
+    <th th:text="${user.username}">132</th>
+    <th th:text="${user.password}">123</th>
+    <th th:text="${user.telephone}">123</th>
+    <th>
+      <a th:href="@{'~/toEdit/'+${user.id}}">Modifier</a>
+    </th>
+  </tr>
+
+</table>
+
+
+</body>
+</html>

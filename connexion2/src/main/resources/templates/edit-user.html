@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+
+<form action="" th:action="@{~/edit.action}" method="post">
+
+    <input name="id" type="hidden" th:value="${user.id}">
+    Username：
+    <input name="username" type="text" th:value="${user.username}">
+    Mot de passe：
+    <input name="password" type="text" th:value="${user.password}">
+    Email：
+    <input name="telephone" type="text" th:value="${user.telephone}">
+
+    <input type="submit" value="Submit">
+
+</form>
+</body>
+</html>
