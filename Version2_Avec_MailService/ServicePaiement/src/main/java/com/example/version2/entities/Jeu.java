@@ -24,6 +24,9 @@ public class Jeu {
     private String date_publication;
     private String priceId;
 
+    //Code d'activation
+    private String activeCode;
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             joinColumns = @JoinColumn(referencedColumnName = "id"),       // jeu_id
@@ -38,6 +41,9 @@ public class Jeu {
         this.nom_fabricant = nom_fabricant;
         this.date_publication = date_publication;
         this.priceId = priceId;
+
+        //chaque jeu a un code
+        this.activeCode=ActiveCode.generateCode();
     }
 
 

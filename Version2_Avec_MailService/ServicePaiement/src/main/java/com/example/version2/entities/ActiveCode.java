@@ -6,6 +6,8 @@ public class ActiveCode {
     private static final String SYMBOLS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final Random RANDOM = new Random();
 
+
+
     public static String generateCode(){
         char[] numbers = new char[6];
         for (int i = 0; i < numbers.length; i++) {
