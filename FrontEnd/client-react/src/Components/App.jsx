@@ -16,9 +16,9 @@ function App() {
     <div className="App">
         <Header islogedIn={islogedIn} setIsLogedIn={setIsLogedIn}/>
         <Routes>
-          <Route path="/login" element={<AuthenticatedRoute islogedIn={!islogedIn} children={<Login setId={setId} setIsLogedIn={setIsLogedIn} />} other={<Navigate to="/user" />} />} /> 
+          <Route path="/login" element={<AuthenticatedRoute islogedIn={!islogedIn} children={<Login Id={id} setId={setId} setIsLogedIn={setIsLogedIn} />} other={<Navigate to="/user" />} />} /> 
           <Route path="/register" element={<AuthenticatedRoute islogedIn={!islogedIn} children={<Register setId={setId} setIsLogedIn={setIsLogedIn} />} other={<Navigate to="/user" />} />} /> 
-          <Route Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp id={id} setId={setId} />} other={<Navigate to="/login" />} />} /> 
+          <Route path="/user/*" element={<AuthenticatedRoute islogedIn={islogedIn} children={<UserApp id={id} setId={setId} />} other={<Navigate to="/login" />} />} /> 
           <Route path="*" element={<Error />} />        
         </Routes>
     </div>

@@ -24,8 +24,9 @@ export default function Bibliotheque({setBiblio}) {
         <div>
             <ul className="liste">
                 {jeuxBiblio.map((jeu) => (
-                <li className="liste-jeu" key={jeu.id}>
+                <li className="liste-jeu" key={("bi-"+jeu.id)}>
                     <Jeu value={jeu}/>
+                    <button>Telecharger/Jouer</button>
                 </li>
                 ))}
             </ul>

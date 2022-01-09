@@ -22,10 +22,10 @@ function ListeJeux({jeuxPanier, setJeuxPanier}) {
         
     }, [])
     
-    function ajouterPanier(id, nom, description, prix) {
+    function ajouterPanier(id, nom, description, prix, activeCode) {
         const jeuAjouter = jeuxPanier.find(jeu => jeu.nom === nom)
         if (!jeuAjouter){
-            jeuxPanier = [...jeuxPanier, {id, nom, description, prix, qte:1}]
+            jeuxPanier = [...jeuxPanier, {id, nom, description, activeCode, prix, qte:1}]
             setJeuxPanier(jeuxPanier);
             
         } else{
@@ -48,7 +48,7 @@ function ListeJeux({jeuxPanier, setJeuxPanier}) {
                 {listeJeux.map((jeu) => (
                 <li className="liste-jeu" key={("li-"+jeu.id)}>
                     <Jeu value={jeu}/>
-                    <button onClick={() => ajouterPanier(jeu.id, jeu.nom, jeu.description, jeu.prix)
+                    <button onClick={() => ajouterPanier(jeu.id, jeu.nom, jeu.description, jeu.prix, jeu.activeCode)
                     }>{jeu.prix}€</button>
                     <button onClick={() => navigate("/user/boutique/"+jeu.id)
                     }>Details</button>

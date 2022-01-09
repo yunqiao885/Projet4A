@@ -2,15 +2,15 @@ import React from 'react';
 import {useState} from "react"
 import { useNavigate } from 'react-router-dom';
 
-function Login ({setId, setIsLogedIn}){
+function Login ({Id, setId, setIsLogedIn}){
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     function handleChange(e, func){
         func(e.target.value);
     }
-
 
     function loginClicked(){
         try {
@@ -25,22 +25,31 @@ function Login ({setId, setIsLogedIn}){
                     })
                 .then(response => response.text())
                 .then(data => {
-                    sessionStorage.setItem('id', data)
-                    setId(data)
-                    console.log(data)
-                    })
+                    if (data != 0){
+                        setIsLogedIn(true);
+                        navigate("/user");
+                        sessionStorage.setItem('id', data)
+                        setId(data)
+                        console.log(data)
+                    } 
+                    else {
+                        setMessage("Nom d'utilisatuer ou mot de passe incorrecte")
+                        setUsername("");
+                        setPassword("");
+                    }
+                })
                 .then(sessionStorage.setItem('username', username))
         } catch (error) {
             console.log(error);
         }
-        setIsLogedIn(true);
-        navigate("/user")
+        
         
     }
 
     return (
         <div className="login">
-            
+            {message}
+            <br/>
             <label htlmfor="username">Username </label>
             <input type="text" id="username" name="username" value={username} onChange={(e) => handleChange(e, setUsername)} />
             <label htlmfor="password">Password </label>
