@@ -14,7 +14,7 @@ public class CreatePayment {
      private Jeu[] jeux;
 
      public int getPrix(){
-          int prix = 1;             // remettre à 0 apres avoir changé l'url de succes
+          int prix = 0;
           for (Jeu jeu : jeux) {
                prix+=jeu.getPrix();
           }

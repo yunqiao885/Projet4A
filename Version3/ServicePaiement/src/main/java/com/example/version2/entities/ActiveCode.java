@@ -13,7 +13,6 @@ public class ActiveCode {
         for (int i = 0; i < numbers.length; i++) {
             numbers[i]=SYMBOLS.charAt(RANDOM.nextInt(SYMBOLS.length()));
         }
-        String code = new String(numbers);
-        return code;
+        return new String(numbers);
     }
 }

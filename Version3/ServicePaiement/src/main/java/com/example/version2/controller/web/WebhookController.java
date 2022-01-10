@@ -80,10 +80,8 @@ public class WebhookController {
         Utilisateur user = utilisateurInterface.findByCustomerId(paymentIntent.getCustomer());
         for (Jeu jeu: user.getPanier().getJeux()) {
             user.getBibliotheque().getJeux().add(jeu);
+            System.out.println(jeu.getNom());
         }
-        Panier panier = user.getPanier();
-        panier.setJeux(new ArrayList<Jeu>());
-        user.setPanier(panier);
         utilisateurInterface.save(user);
     }
 }

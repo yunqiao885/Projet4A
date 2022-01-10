@@ -27,17 +27,19 @@ function UserApp({id, setId}) {
             setUser(data);
             setPanier(data.panier)
             setBiblio(data.bibliotheque)
+            sessionStorage.setItem("cusId", data.customerId)
         } catch (error) {
             console.log(error);
         }
     }
+
     if (id!==0 && id!==null) getJoueurInfo()
 }, [id])
   return (
     <div className="App">
         <Routes>
           <Route path="/boutique/*" element={<Boutique panier={panier} setPanier={setPanier} />}/>
-          <Route path="/paiement" element={<PaymentApp customerId={user.customerId} panier={panier} />}/>
+          <Route path="/paiement/*" element={<PaymentApp customerId={user.customerId} panier={panier} />}/>
           <Route path="/bibliotheque" element={<Bibliotheque biblio={biblio} setBiblio={setBiblio} />}/>
           <Route path="/compte" element={<Compte user={user} setUser={setUser} />}/>
           <Route path="/logout" element={<Navigate to="/login" />} />

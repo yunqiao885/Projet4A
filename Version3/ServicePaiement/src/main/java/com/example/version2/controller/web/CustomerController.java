@@ -39,8 +39,9 @@ public class CustomerController {
 
     @PostMapping("/get-customer-id")
     public int getCustomerId(@RequestBody CreateCustomer createCustomer) throws StripeException {
-        Utilisateur user = utilisateurInterface.findByUsername(createCustomer.getUsername());
-        return user.getId();
+        Utilisateur user = utilisateurInterface.findByUsernameAndPassword(createCustomer.getUsername(), createCustomer.getPassword());
+        if (user == null) return 0;
+        else return user.getId();
     }
 
 

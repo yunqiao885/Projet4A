@@ -58,7 +58,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/user/bibliotheque", // rediriger vers la bibliotheque
+        return_url: "http://localhost:3000/user/paiement/succeded", // rediriger vers la page de l'utilisateur
       },
     });
 
