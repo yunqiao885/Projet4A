@@ -42,10 +42,6 @@ public class Version2Application {
             jeuInterface.save(new Jeu("Sims 4","Jeu de simulation",50,"Electronic Arts","10/03/2020", null));
             jeuInterface.save(new Jeu("Streef Fighter","Jeu de combat",70,"Capcom","10/03/2020", null));
 
-            utilisateurInterface.save(new Utilisateur("tenede","tenede@tene.com", "123", new Panier(10), new Bibliotheque(), null));
-            utilisateurInterface.save(new Utilisateur("yunqiao","yunqiao@zhang.com", "456", new Panier(200), new Bibliotheque(), null));
-            utilisateurInterface.save(new Utilisateur("zixiao","zixiao@zhong.com", "789", new Panier(44), new Bibliotheque(), null));
-
             try{
                 Runtime.getRuntime().exec("stripe listen --forward-to localhost:8080/webhook");
             } catch (IOException e) {

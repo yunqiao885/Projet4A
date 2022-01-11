@@ -32,7 +32,8 @@ public class CustomerController {
                 )
                 .build();
         Customer customer = Customer.create(params);
-        Utilisateur user = new Utilisateur(createCustomer.getUsername(),createCustomer.getEmail(),createCustomer.getPassword(),new Panier(), new Bibliotheque(), customer.getId());
+        Utilisateur user = new Utilisateur(createCustomer.getUsername(),createCustomer.getEmail(),
+                createCustomer.getPassword(),new Panier(), new Bibliotheque(), customer.getId());
         utilisateurInterface.save(user);
         return user.getId();
     }
