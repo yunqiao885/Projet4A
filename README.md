@@ -53,15 +53,15 @@ Pour modéliser notre application, parmi les nombreux outils qui existent, nous 
 
 * Le diagramme de Cas d'utilisation : Ici, nous avons recensé tous les cas d'utilisations et scenarios qui pourraient se produire sir notre application
 
-![](C:\Users\Client\Desktop\4A IA2R SIR\Systeme distribue\projet 4A\Projet4A-1\Diagrammes UML\Use case\Use_Case.png)
+![](https://github.com/yunqiao885/Projet4A/blob/main/Diagrammes%20UML/Use%20case/Use_Case.png)
 
 * Le diagramme de Classe : Dans ce diagramme, Nous avons représenté toutes les données que notre application traitera, ainsi que les différentes interactions entre ces données
 
-![](C:\Users\Client\Desktop\4A IA2R SIR\Systeme distribue\projet 4A\Projet4A-1\Diagrammes UML\Class\Classe.png)
+![](https://github.com/yunqiao885/Projet4A/blob/main/Diagrammes%20UML/Class/Classe.png)
 
 * Le diagramme de Séquence : Pour le diagramme de séquence, nous avons traité le cas nominale qui est celui de l'achat d'un jeu et nous avons donc représenté les différentes étapes qui s'effectuent entre un client et nos services web
 
-![](C:\Users\Client\Desktop\4A IA2R SIR\Systeme distribue\projet 4A\Projet4A-1\Diagrammes UML\Sequence\diag_sequence.PNG)
+![](https://github.com/yunqiao885/Projet4A/blob/main/Diagrammes%20UML/Sequence/diag_sequence.PNG)
 
 
 
