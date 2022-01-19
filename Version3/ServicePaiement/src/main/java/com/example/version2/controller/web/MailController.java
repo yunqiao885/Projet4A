@@ -48,7 +48,7 @@ public class MailController {
                 + "\nMerci pour cette recente transaction sur MDJ.\n" +
                 "\nLes articles suivants ont été achetés sur MDJ a la date du "+sdf.format(date)+" :\n";
         for (Jeu jeu: createPayment.getJeux()) {
-            text+=jeu.getNom()+" : "+ jeu.getPrix()+"€ . \nCode d'activation : "+jeu.getActiveCode();
+            text+=jeu.getNom()+" : "+ jeu.getPrix()+"€ . \tCode d'activation : "+jeu.getActiveCode()+"\n";
         }
         text+="\nNous vous souhaitons d'agreables heures de jeu\n" +
                 "\nL'équipe MDJ";

@@ -42,13 +42,6 @@ public class Version2Application {
             jeuInterface.save(new Jeu("Sims 4","Jeu de simulation",50,"Electronic Arts","10/03/2020", null));
             jeuInterface.save(new Jeu("Streef Fighter","Jeu de combat",70,"Capcom","10/03/2020", null));
 
-            try{
-                Runtime.getRuntime().exec("stripe listen --forward-to localhost:8080/webhook");
-            } catch (IOException e) {
-                e.printStackTrace();
-                Runtime.getRuntime().exec("stripe login --api-key sk_test_51Jx3zGE53UCrsTeHryxghX02Z13mWyW0qkNKQBImrOcnor1JkidIAdFROjngKDcpIlmX6mIwfJtihapBjiJhSLXG00FYEzWFm2");
-                Runtime.getRuntime().exec("stripe listen --forward-to localhost:8080/webhook");
-            }
         };
     }
 

@@ -2,6 +2,7 @@ package com.example.version2.controller.data;
 
 import com.example.version2.dao.BibliothequeInterface;
 import com.example.version2.entities.Bibliotheque;
+import com.example.version2.entities.Jeu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +32,11 @@ public class BibliothequeController {
 
     @PutMapping("/biblios/{id}")
     public Bibliotheque update(@RequestBody Bibliotheque bibliotheque,@PathVariable int id){
-        bibliotheque.setId(id);
-        return bibliothequeInterface.save(bibliotheque);
+        Bibliotheque user = bibliothequeInterface.findById(id).get();
+        for (Jeu jeu: bibliotheque.getJeux()) {
+            user.getJeux().add(jeu);
+        }
+        return bibliothequeInterface.save(user);
     }
 
     @DeleteMapping("/biblios/{id}")
